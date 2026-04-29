@@ -1,12 +1,12 @@
 {
   "family": "sample-app-task",
   "networkMode": "awsvpc",
-  "executionRoleArn": "arn:aws:iam::831313446054:role/sample-app-task-execution-role",
-  "taskRoleArn": "arn:aws:iam::831313446054:role/sample-app-task-role",
+  "executionRoleArn": "arn:aws:iam::361986022123:role/sample-app-task-execution-role",
+  "taskRoleArn": "arn:aws:iam::361986022123:role/sample-app-task-role",
   "containerDefinitions": [
     {
       "name": "sample-app",
-      "image": "831313446054.dkr.ecr.ap-northeast-1.amazonaws.com/okamuras-kitchen:latest",
+      "image": "361986022123.dkr.ecr.ap-northeast-1.amazonaws.com/okamuras-kitchen:latest",
       "portMappings": [{ "containerPort": 80, "protocol": "tcp" }],
       "logConfiguration": {
         "logDriver": "awslogs",
