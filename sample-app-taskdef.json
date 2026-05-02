@@ -5,8 +5,8 @@
   "taskRoleArn": "arn:aws:iam::361986022123:role/sample-app-task-role",
   "containerDefinitions": [
     {
-      "name": "okamuras-kitchen",
-      "image": "361986022123.dkr.ecr.ap-northeast-1.amazonaws.com/okamuras-kitchen:latest",
+      "name": "sample-app",
+      "image": "361986022123.dkr.ecr.ap-northeast-1.amazonaws.com/sample-app:latest",
       "portMappings": [{ "containerPort": 80, "protocol": "tcp" }],
       "logConfiguration": {
         "logDriver": "awslogs",
