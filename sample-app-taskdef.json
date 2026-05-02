@@ -1,38 +1,34 @@
 {
-  "family": "sample-app-task",
+  "family": "sample-app-prod-task",
   "networkMode": "awsvpc",
-  "executionRoleArn": "arn:aws:iam::361986022123:role/sample-app-task-execution-role",
-  "taskRoleArn": "arn:aws:iam::361986022123:role/sample-app-task-role",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "runtimePlatform": {
+    "operatingSystemFamily": "LINUX",
+    "cpuArchitecture": "ARM64"
+  },
+  "executionRoleArn": "arn:aws:iam::361986022123:role/sample-app-prod-task-execution-role",
+  "taskRoleArn": "arn:aws:iam::361986022123:role/sample-app-prod-task-role",
   "containerDefinitions": [
     {
       "name": "sample-app",
-      "image": "361986022123.dkr.ecr.ap-northeast-1.amazonaws.com/sample-app:latest",
-      "portMappings": [{ "containerPort": 80, "protocol": "tcp" }],
+      "image": "<IMAGE1_NAME>",
+      "essential": true,
+      "portMappings": [
+        { "containerPort": 80, "protocol": "tcp" }
+      ],
+      "environment": [
+        { "name": "NODE_ENV", "value": "prod" }
+      ],
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/sample-app",
+          "awslogs-group": "/ecs/sample-app-prod",
           "awslogs-region": "ap-northeast-1",
-          "awslogs-stream-prefix": "ecs"
+          "awslogs-stream-prefix": "sample-app-prod"
         }
-      },
-      "essential": true
+      }
     }
-  ],
-  "runtimePlatform": {
-      "operatingSystemFamily": "LINUX",
-      "cpuArchitecture": "ARM64"
-  },
-  "portMappings": [
-    {
-      "containerPort": 80,
-      "protocol": "Protocol.TCP"
-    }
-  ],
-  "environment": {
-    "NODE_ENV": "prod"
-  },
-  "requiresCompatibilities": ["FARGATE"],
-  "cpu": "256",
-  "memory": "512"
+  ]
 }
